@@ -1,11 +1,16 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FiCheckSquare } from "react-icons/fi";
 
 export function AddNote() {
   const [title, setTitle] = useState("");
+  const [text, setText] = useState("");
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+  }
 
   return (
-    <div>
+    <form onSubmit={handleSubmit}>
       <div>
         <input
           type="text"
@@ -18,8 +23,14 @@ export function AddNote() {
         <FiCheckSquare />
       </div>
       <div>
-        <textarea name="text"></textarea>
+        <textarea
+          name="text"
+          value={text}
+          onChange={(e) => {
+            setText(e.target.value);
+          }}
+        ></textarea>
       </div>
-    </div>
+    </form>
   );
 }
