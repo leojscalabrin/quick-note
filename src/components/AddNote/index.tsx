@@ -1,7 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { FiCheckSquare } from "react-icons/fi";
 
-export function AddNote() {
+type Note = {
+  title: string
+  text: string
+}
+interface AddNoteProps {
+  onAddNote: (note: Note) => void
+}
+
+export function AddNote(props: AddNoteProps) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 

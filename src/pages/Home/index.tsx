@@ -1,9 +1,13 @@
 import { AddNote } from "../../components/AddNote"
 
 function Home() {
+    const handleAddNote = () => {
+
+    }
+
     return (
         <div>
-            <AddNote />
+            <AddNote onAddNote={handleAddNote} />
         </div>
     )
 }
