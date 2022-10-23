@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { FiCheckSquare } from "react-icons/fi";
 
-type Note = {
+export type Note = {
   title: string
   text: string
 }
@@ -9,12 +9,19 @@ interface AddNoteProps {
   onAddNote: (note: Note) => void
 }
 
-export function AddNote(props: AddNoteProps) {
+export function AddNote({onAddNote}: AddNoteProps) {
   const [title, setTitle] = useState("");
   const [text, setText] = useState("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault()
+    e.preventDefault();
+
+    const note = {
+      title: title,
+      text: text
+    }
+
+    onAddNote(note);
   }
 
   return (
@@ -39,6 +46,7 @@ export function AddNote(props: AddNoteProps) {
           }}
         ></textarea>
       </div>
+      <button type="submit">Salvar</button>
     </form>
   );
 }

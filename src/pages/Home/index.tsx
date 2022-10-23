@@ -1,15 +1,22 @@
-import { AddNote } from "../../components/AddNote"
+import { useEffect, useState } from "react";
+import { AddNote, Note } from "../../components/AddNote";
 
 function Home() {
-    const handleAddNote = () => {
+  const [notes, setNotes] = useState<Note[]>([]);
 
-    }
+  const handleAddNote = (note: Note) => {
+    setNotes([...notes, note]);
+  };
 
-    return (
-        <div>
-            <AddNote onAddNote={handleAddNote} />
-        </div>
-    )
+  useEffect(() => {
+    console.log(notes);
+  }, [notes]);
+
+  return (
+    <div>
+      <AddNote onAddNote={handleAddNote} />
+    </div>
+  );
 }
 
-export { Home }
+export { Home };
